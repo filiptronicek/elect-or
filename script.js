@@ -3,10 +3,10 @@ const dom = {
     republicanDiv: document.getElementById("vote-r")
 };
 
-const url = "https://cors-anywhere.herokuapp.com/www.politico.com/2020-national-results/balance-of-power.json";
+const url = "https://www.politico.com/2020-national-results/balance-of-power.json";
 const votesRequired = 270;
 
-function updateStats() {
+function updateStats(disco) {
     fetch(url).then(res => res.json()).then(responce => {
         const diff = {
             r: votesRequired - responce.president["called-r"],
@@ -23,8 +23,17 @@ function updateStats() {
             document.querySelector(`.peep-${looser}`).style.display = 'none';
             document.querySelector(`.results-${winner}`).innerText = "won";
         } 
+        if(disco !== undefined) {
+            const winningColor = winner === 'd' ? "#00b0f3" : "#e9141e";
+            document.querySelector("body").style.background = disco ? winningColor : "white";
+            document.querySelector("body").style.color = disco ? "white" : "black";
+        }
     });
 }
 
-updateStats();
-setInterval(() => updateStats(), 2000);
+function updateSettings(el) {
+    updateStats(el.checked);
+}
+
+updateStats(document.getElementById("disco-mode").checked);
+setInterval(() => updateStats(), 15000);

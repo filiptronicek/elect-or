@@ -3,9 +3,16 @@
 * {
     font-family: 'Roboto', 'sans-serif';
 }
+
 .peep {
     font-size: 3rem;
 }
+
 .peep img {
     max-width: 90vw;
+}
+
+#disco {
+    position: absolute;
+    bottom: 15px;
 }
