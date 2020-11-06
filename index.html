@@ -6,22 +6,26 @@
     <title>Election results or something</title>
 
     <script src="script.js" defer></script>
-
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="peep">
-        <img src="assets/img/joe.png">
-        Joe Biden
-        <span>
-           needs <span id="vote-d"></span> votes to win
-        </span>
-    </div>
-    <div class="peep">
-        <img src="assets/img/donald.png">
-        Donald J. Trump
-        <span>
-          needs  <span id="vote-r"></span> votes to win
-        </span>
-    </div>
+    <center>
+        <div class="peep peep-d">
+            <img src="assets/img/joe.png">
+            <br>
+            Joe Biden
+            <span class="results-d">
+            needs <span id="vote-d"></span> votes to win
+            </span>
+        </div>
+        <div class="peep peep-r">
+            <img src="assets/img/donald.png">
+            <br>
+            Donald J. Trump
+            <span class="results-r">
+            needs  <span id="vote-r"></span> votes to win
+            </span>
+        </div>
+    </center>
 </body>
 </html>
