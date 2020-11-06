@@ -3,7 +3,7 @@ const dom = {
     republicanDiv: document.getElementById("vote-r")
 };
 
-const url = "https://www.politico.com/2020-national-results/balance-of-power.json";
+const url = "https://cors-anywhere.herokuapp.com/www.politico.com/2020-national-results/balance-of-power.json";
 const votesRequired = 270;
 
 function updateStats() {
@@ -15,7 +15,7 @@ function updateStats() {
 
         dom.democraticDiv.innerText = diff.d;
         dom.republicanDiv.innerText = diff.r;
-        
+
         const winner = (Object.keys(diff).reduce((a, b) => diff[a] < diff[b] ? a : b));
         const looser = (Object.keys(diff).reduce((a, b) => diff[a] > diff[b] ? a : b));
 
