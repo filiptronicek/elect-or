@@ -36,4 +36,4 @@ function updateSettings(el) {
 }
 
 updateStats();
-setInterval(() => updateStats(), 15000);
+setInterval(() => updateStats(), 2000);
