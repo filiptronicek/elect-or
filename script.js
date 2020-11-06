@@ -6,7 +6,7 @@ const dom = {
 const url = "https://www.politico.com/2020-national-results/balance-of-power.json";
 const votesRequired = 270;
 
-function updateStats(disco) {
+function updateStats(disco = document.getElementById("disco-mode").checked) {
     fetch(url).then(res => res.json()).then(responce => {
         const diff = {
             r: votesRequired - responce.president["called-r"],
@@ -23,11 +23,11 @@ function updateStats(disco) {
             document.querySelector(`.peep-${looser}`).style.display = 'none';
             document.querySelector(`.results-${winner}`).innerText = "won";
         } 
-        if(disco !== undefined) {
-            const winningColor = winner === 'd' ? "#00b0f3" : "#e9141e";
-            document.querySelector("body").style.background = disco ? winningColor : "white";
-            document.querySelector("body").style.color = disco ? "white" : "black";
-        }
+
+        const winningColor = winner === 'd' ? "#00b0f3" : "#e9141e";
+        document.querySelector("body").style.background = disco ? winningColor : "white";
+        document.querySelector("body").style.color = disco ? "white" : "black";
+        
     });
 }
 
@@ -35,5 +35,5 @@ function updateSettings(el) {
     updateStats(el.checked);
 }
 
-updateStats(document.getElementById("disco-mode").checked);
+updateStats();
 setInterval(() => updateStats(), 15000);
