@@ -8,16 +8,14 @@ const votesRequired = 270;
 
 function updateStats() {
     fetch(url).then(res => res.json()).then(responce => {
-        /*const diff = {
+        const diff = {
             r: votesRequired - responce.president["called-r"],
             d: votesRequired - responce.president["called-d"],
-        };*/
-        const diff = {
-            r: -5,
-            d: 5
         };
+
         dom.democraticDiv.innerText = diff.d;
         dom.republicanDiv.innerText = diff.r;
+        
         const winner = (Object.keys(diff).reduce((a, b) => diff[a] < diff[b] ? a : b));
         const looser = (Object.keys(diff).reduce((a, b) => diff[a] > diff[b] ? a : b));
 
